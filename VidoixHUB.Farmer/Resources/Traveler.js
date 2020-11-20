@@ -6,10 +6,6 @@ var username = '{{username}}';
 var password = '{{password}}';
 var linkHome = 'https://www.vidoix.com/';
 var linkLogin = 'https://www.vidoix.com/login';
-
-function timeOut10(fn) {
-    setTimeout(fn(), 10 * 1000);
-}
 function timeOut(fn, seconds) {
     setTimeout(fn(), seconds * 1000);
 }
@@ -67,12 +63,13 @@ function mainJS() {
     var counter = 0;
     var loadMoreVideoInterval = setInterval(function () {
         counter += 1;
-        if ($('#loadMoreVideo *').length > 0) {
-            clearInterval(loadMoreVideoInterval);
-            selectVideo();
-        } else if (counter >= 7) {
-            clearInterval(loadMoreVideoInterval);
-            selectVideo();
+        try {
+            if ($('#loadMoreVideo *').length > 0 || counter >= 5) {
+                clearInterval(loadMoreVideoInterval);
+                selectVideo();
+            }
+        } catch (e) {
+
         }
     }, 1000);
 }
@@ -81,11 +78,11 @@ function selectVideo() {
         window.location.href = $('#loadMoreVideo > div > a:first').attr('href');
     } else {
         if ($('#filterSecond > i').length > 0) {
-            timeOut10(function () {
+            timeOut(function () {
                 $('#filterCoins').click();
             });
         } else if ($('#filterCoins > i').length > 0) {
-            timeOut10(function () {
+            timeOut(function () {
                 $('#filterSecond').click();
             });
         } else {

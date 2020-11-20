@@ -79,10 +79,23 @@ namespace VidoixHUB.Farmer.Forms
 {
     public partial class WebForm : Form
     {
+        private const string youtubeURL = "https://www.youtube.com/embed/";
+        private const string vidoixURL = "https://www.vidoix.com/";
         private readonly ChromiumWebBrowser chromiumWebBrowser;
+        private bool firstLoader = true;
         public WebForm()
         {
             InitializeComponent();
+
+            Text = Program.ThreadName;
+
+            nudWidth.Value = Program.Width;
+
+            nudHeigth.Value = Program.Heigth;
+
+            tbxUserName.Text = Program.Username;
+
+            tbxPassword.Text = Program.Password;
 
             CefSharpSettings.LegacyJavascriptBindingEnabled = true;
 
@@ -96,29 +109,41 @@ namespace VidoixHUB.Farmer.Forms
 
             Cef.Initialize(settings);
 
-            chromiumWebBrowser = new ChromiumWebBrowser("https://www.vidoix.com")
+            chromiumWebBrowser = new ChromiumWebBrowser(vidoixURL)
             {
                 Parent = this,
                 Dock = DockStyle.Fill
             };
 
             chromiumWebBrowser.FrameLoadEnd += ChromiumWebBrowser_FrameLoadEnd;
+
         }
         private void ChromiumWebBrowser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
-            if (e.Url == "https://www.vidoix.com/" || e.Url.StartsWith("https://www.vidoix.com/youtube/"))
+            if (e.Url == vidoixURL || e.Url.StartsWith($"{vidoixURL}youtube/"))
             {
-                chromiumWebBrowser.RegisterAllSource();
+                if (firstLoader)
+                {
+                    firstLoader = false;
 
-                chromiumWebBrowser.ReRegisterSource(ScriptType.Traveler, new Dictionary<string, string> {
-                    { "{{username}}", "betterThanYou" },
-                    { "{{password}}", "FM97sivas57" }
-                }, false);
+                    chromiumWebBrowser.RegisterAllSource();
+
+                    chromiumWebBrowser.ReRegisterSource(ScriptType.Traveler, new Dictionary<string, string> {
+                        { "{{username}}", Program.Username },
+                        { "{{password}}", Program.Password }
+                    }, false);
+                }
 
                 e.Frame.Load(ScriptType.Traveler);
             }
-            else if (e.Url.StartsWith("https://www.youtube.com/embed/"))
+            else if (e.Url.StartsWith(youtubeURL))
                 e.Frame.Load(ScriptType.Qualityer);
         }
+        private void BtnShowDevTool_Click(object sender, EventArgs e) => chromiumWebBrowser.ShowDevTools();
+        private void BtnCloseDevTool_Click(object sender, EventArgs e) => chromiumWebBrowser.CloseDevTools();
+        private void BtnUIHide_Click(object sender, EventArgs e) => pUI.Visible = false;
+        private void BtnUIShow_Click(object sender, EventArgs e) => pUI.Visible = true;
+        private void NudWidth_ValueChanged(object sender, EventArgs e) => Width = (int)nudWidth.Value;
+        private void NudHeigth_ValueChanged(object sender, EventArgs e) => Height = (int)nudHeigth.Value;
     }
 }
