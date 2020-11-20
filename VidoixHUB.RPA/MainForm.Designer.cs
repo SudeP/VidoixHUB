@@ -29,6 +29,7 @@ namespace VidoixHUB.RPA
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pList = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -62,6 +63,7 @@ namespace VidoixHUB.RPA
             this.Controls.Add(this.pList);
             this.Font = new System.Drawing.Font("Consolas", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

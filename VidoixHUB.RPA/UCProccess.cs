@@ -62,6 +62,6 @@ namespace VidoixHUB.RPA
                 Dispose();
             }
         }
-        private void BtnStart_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("VidoixHUB.Farmer.exe", $@"""{tbxUsername.Text}"" ""{tbxPassword.Text}"" ""{id}"" ""{nudWidth.Value}"" ""{nudHeigth.Value}""");
+        private void BtnStart_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("Farmer.exe", $@"""{tbxUsername.Text}"" ""{tbxPassword.Text}"" ""{id}"" ""{nudWidth.Value}"" ""{nudHeigth.Value}""");
     }
 }

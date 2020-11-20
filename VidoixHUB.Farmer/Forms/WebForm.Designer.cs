@@ -50,7 +50,7 @@ namespace VidoixHUB.Farmer.Forms
             // 
             // pUI
             // 
-            this.pUI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pUI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pUI.BackColor = System.Drawing.Color.White;
             this.pUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -66,7 +66,7 @@ namespace VidoixHUB.Farmer.Forms
             this.pUI.Controls.Add(this.lblWidth);
             this.pUI.Controls.Add(this.nudWidth);
             this.pUI.Font = new System.Drawing.Font("Consolas", 12F);
-            this.pUI.Location = new System.Drawing.Point(12, 128);
+            this.pUI.Location = new System.Drawing.Point(12, 12);
             this.pUI.Name = "pUI";
             this.pUI.Size = new System.Drawing.Size(535, 119);
             this.pUI.TabIndex = 0;
@@ -224,9 +224,9 @@ namespace VidoixHUB.Farmer.Forms
             // 
             // btnUIShow
             // 
-            this.btnUIShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUIShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUIShow.Font = new System.Drawing.Font("Consolas", 8F);
-            this.btnUIShow.Location = new System.Drawing.Point(442, 221);
+            this.btnUIShow.Location = new System.Drawing.Point(439, 102);
             this.btnUIShow.Name = "btnUIShow";
             this.btnUIShow.Size = new System.Drawing.Size(100, 20);
             this.btnUIShow.TabIndex = 1;

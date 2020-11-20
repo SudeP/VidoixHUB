@@ -1,8 +1,4 @@
-﻿
-
-
-
-var username = '{{username}}';
+﻿var username = '{{username}}';
 var password = '{{password}}';
 var linkHome = 'https://www.vidoix.com/';
 var linkLogin = 'https://www.vidoix.com/login';
@@ -135,7 +131,6 @@ function isFinish() {
         }
     }, 500);
 }
-inithome();
-
-
-
+document.addEventListener('DOMContentLoaded', function () {
+    inithome();
+}, false);

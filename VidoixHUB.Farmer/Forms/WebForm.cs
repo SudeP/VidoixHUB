@@ -101,7 +101,7 @@ namespace VidoixHUB.Farmer.Forms
 
             CefSettings settings = new CefSettings
             {
-                CachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\VidoixHUB.Farmer",
+                CachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\VidoixHUB.Farmer." + Program.Username,
                 Locale = "tr"
             };
 
@@ -120,7 +120,7 @@ namespace VidoixHUB.Farmer.Forms
         }
         private void ChromiumWebBrowser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
-            if (e.Url == vidoixURL || e.Url.StartsWith($"{vidoixURL}youtube/"))
+            if (e.Url.StartsWith(vidoixURL))
             {
                 if (firstLoader)
                 {
