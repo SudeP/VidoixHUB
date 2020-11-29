@@ -87,7 +87,7 @@ namespace VidoixHUB.Farmer.Forms
         {
             InitializeComponent();
 
-            Text = Program.ThreadName;
+            Text = string.Format("{0} {1}", Program.ThreadName, Program.Username);
 
             nudWidth.Value = Program.Width;
 
@@ -128,11 +128,15 @@ namespace VidoixHUB.Farmer.Forms
 
                     chromiumWebBrowser.RegisterAllSource();
 
+                    chromiumWebBrowser.ReRegisterSource(ScriptType.Includer, null, false);
+
                     chromiumWebBrowser.ReRegisterSource(ScriptType.Traveler, new Dictionary<string, string> {
                         { "{{username}}", Program.Username },
                         { "{{password}}", Program.Password }
                     }, false);
                 }
+
+                e.Frame.Load(ScriptType.Includer);
 
                 e.Frame.Load(ScriptType.Traveler);
             }
@@ -145,5 +149,6 @@ namespace VidoixHUB.Farmer.Forms
         private void BtnUIShow_Click(object sender, EventArgs e) => pUI.Visible = true;
         private void NudWidth_ValueChanged(object sender, EventArgs e) => Width = (int)nudWidth.Value;
         private void NudHeigth_ValueChanged(object sender, EventArgs e) => Height = (int)nudHeigth.Value;
+        private void BtnLoadHomePage_Click(object sender, EventArgs e) => chromiumWebBrowser.Load(vidoixURL);
     }
 }

@@ -31,6 +31,7 @@ namespace VidoixHUB.Farmer.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebForm));
             this.pUI = new System.Windows.Forms.Panel();
+            this.btnLoadHomePage = new System.Windows.Forms.Button();
             this.btnUIHide = new System.Windows.Forms.Button();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@ namespace VidoixHUB.Farmer.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pUI.BackColor = System.Drawing.Color.White;
             this.pUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pUI.Controls.Add(this.btnLoadHomePage);
             this.pUI.Controls.Add(this.btnUIHide);
             this.pUI.Controls.Add(this.lblPassword);
             this.pUI.Controls.Add(this.lblUsername);
@@ -66,19 +68,32 @@ namespace VidoixHUB.Farmer.Forms
             this.pUI.Controls.Add(this.lblWidth);
             this.pUI.Controls.Add(this.nudWidth);
             this.pUI.Font = new System.Drawing.Font("Consolas", 12F);
-            this.pUI.Location = new System.Drawing.Point(12, 12);
+            this.pUI.Location = new System.Drawing.Point(2, 68);
             this.pUI.Name = "pUI";
-            this.pUI.Size = new System.Drawing.Size(535, 119);
+            this.pUI.Size = new System.Drawing.Size(554, 128);
             this.pUI.TabIndex = 0;
             this.pUI.Visible = false;
+            // 
+            // btnLoadHomePage
+            // 
+            this.btnLoadHomePage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoadHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLoadHomePage.BackgroundImage")));
+            this.btnLoadHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLoadHomePage.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLoadHomePage.Location = new System.Drawing.Point(345, 3);
+            this.btnLoadHomePage.Name = "btnLoadHomePage";
+            this.btnLoadHomePage.Size = new System.Drawing.Size(64, 64);
+            this.btnLoadHomePage.TabIndex = 11;
+            this.btnLoadHomePage.UseVisualStyleBackColor = true;
+            this.btnLoadHomePage.Click += new System.EventHandler(this.BtnLoadHomePage_Click);
             // 
             // btnUIHide
             // 
             this.btnUIHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUIHide.Font = new System.Drawing.Font("Consolas", 8F);
-            this.btnUIHide.Location = new System.Drawing.Point(439, 3);
+            this.btnUIHide.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUIHide.Location = new System.Drawing.Point(427, 3);
             this.btnUIHide.Name = "btnUIHide";
-            this.btnUIHide.Size = new System.Drawing.Size(91, 19);
+            this.btnUIHide.Size = new System.Drawing.Size(121, 31);
             this.btnUIHide.TabIndex = 10;
             this.btnUIHide.Text = "Paneli Kapat";
             this.btnUIHide.UseVisualStyleBackColor = true;
@@ -88,45 +103,47 @@ namespace VidoixHUB.Farmer.Forms
             // 
             this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(361, 65);
+            this.lblPassword.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Underline);
+            this.lblPassword.Location = new System.Drawing.Point(389, 70);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(81, 19);
+            this.lblPassword.Size = new System.Drawing.Size(108, 19);
             this.lblPassword.TabIndex = 9;
-            this.lblPassword.Text = "Password";
+            this.lblPassword.Text = "Password : ";
             // 
             // lblUsername
             // 
             this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(191, 66);
+            this.lblUsername.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Underline);
+            this.lblUsername.Location = new System.Drawing.Point(223, 71);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(81, 19);
+            this.lblUsername.Size = new System.Drawing.Size(108, 19);
             this.lblUsername.TabIndex = 8;
-            this.lblUsername.Text = "Username";
+            this.lblUsername.Text = "Username : ";
             // 
             // tbxPassword
             // 
             this.tbxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbxPassword.Location = new System.Drawing.Point(365, 87);
+            this.tbxPassword.Location = new System.Drawing.Point(389, 94);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.ReadOnly = true;
-            this.tbxPassword.Size = new System.Drawing.Size(164, 26);
+            this.tbxPassword.Size = new System.Drawing.Size(159, 26);
             this.tbxPassword.TabIndex = 7;
             // 
             // tbxUserName
             // 
             this.tbxUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbxUserName.Location = new System.Drawing.Point(195, 87);
+            this.tbxUserName.Location = new System.Drawing.Point(227, 94);
             this.tbxUserName.Name = "tbxUserName";
             this.tbxUserName.ReadOnly = true;
-            this.tbxUserName.Size = new System.Drawing.Size(164, 26);
+            this.tbxUserName.Size = new System.Drawing.Size(159, 26);
             this.tbxUserName.TabIndex = 6;
             // 
             // btnCloseDevTool
             // 
-            this.btnCloseDevTool.Location = new System.Drawing.Point(140, 3);
+            this.btnCloseDevTool.Location = new System.Drawing.Point(163, 3);
             this.btnCloseDevTool.Name = "btnCloseDevTool";
-            this.btnCloseDevTool.Size = new System.Drawing.Size(131, 48);
+            this.btnCloseDevTool.Size = new System.Drawing.Size(153, 52);
             this.btnCloseDevTool.TabIndex = 5;
             this.btnCloseDevTool.Text = "DevTool Kapa";
             this.btnCloseDevTool.UseVisualStyleBackColor = true;
@@ -136,7 +153,7 @@ namespace VidoixHUB.Farmer.Forms
             // 
             this.btnShowDevTool.Location = new System.Drawing.Point(3, 3);
             this.btnShowDevTool.Name = "btnShowDevTool";
-            this.btnShowDevTool.Size = new System.Drawing.Size(131, 48);
+            this.btnShowDevTool.Size = new System.Drawing.Size(153, 52);
             this.btnShowDevTool.TabIndex = 4;
             this.btnShowDevTool.Text = "DevTool Aç";
             this.btnShowDevTool.UseVisualStyleBackColor = true;
@@ -146,11 +163,12 @@ namespace VidoixHUB.Farmer.Forms
             // 
             this.lblHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(99, 66);
+            this.lblHeight.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Underline);
+            this.lblHeight.Location = new System.Drawing.Point(115, 71);
             this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(63, 19);
+            this.lblHeight.Size = new System.Drawing.Size(90, 19);
             this.lblHeight.TabIndex = 3;
-            this.lblHeight.Text = "Heigth";
+            this.lblHeight.Text = "Heigth : ";
             // 
             // nudHeigth
             // 
@@ -160,7 +178,7 @@ namespace VidoixHUB.Farmer.Forms
             0,
             0,
             0});
-            this.nudHeigth.Location = new System.Drawing.Point(99, 88);
+            this.nudHeigth.Location = new System.Drawing.Point(115, 95);
             this.nudHeigth.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -173,7 +191,7 @@ namespace VidoixHUB.Farmer.Forms
             0});
             this.nudHeigth.Name = "nudHeigth";
             this.nudHeigth.ReadOnly = true;
-            this.nudHeigth.Size = new System.Drawing.Size(90, 26);
+            this.nudHeigth.Size = new System.Drawing.Size(105, 26);
             this.nudHeigth.TabIndex = 2;
             this.nudHeigth.Value = new decimal(new int[] {
             300,
@@ -186,11 +204,12 @@ namespace VidoixHUB.Farmer.Forms
             // 
             this.lblWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(3, 66);
+            this.lblWidth.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Underline);
+            this.lblWidth.Location = new System.Drawing.Point(3, 71);
             this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(54, 19);
+            this.lblWidth.Size = new System.Drawing.Size(81, 19);
             this.lblWidth.TabIndex = 1;
-            this.lblWidth.Text = "Width";
+            this.lblWidth.Text = "Width : ";
             // 
             // nudWidth
             // 
@@ -200,7 +219,7 @@ namespace VidoixHUB.Farmer.Forms
             0,
             0,
             0});
-            this.nudWidth.Location = new System.Drawing.Point(3, 88);
+            this.nudWidth.Location = new System.Drawing.Point(3, 95);
             this.nudWidth.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -213,7 +232,7 @@ namespace VidoixHUB.Farmer.Forms
             0});
             this.nudWidth.Name = "nudWidth";
             this.nudWidth.ReadOnly = true;
-            this.nudWidth.Size = new System.Drawing.Size(90, 26);
+            this.nudWidth.Size = new System.Drawing.Size(105, 26);
             this.nudWidth.TabIndex = 0;
             this.nudWidth.Value = new decimal(new int[] {
             600,
@@ -225,10 +244,10 @@ namespace VidoixHUB.Farmer.Forms
             // btnUIShow
             // 
             this.btnUIShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUIShow.Font = new System.Drawing.Font("Consolas", 8F);
-            this.btnUIShow.Location = new System.Drawing.Point(439, 102);
+            this.btnUIShow.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUIShow.Location = new System.Drawing.Point(430, 72);
             this.btnUIShow.Name = "btnUIShow";
-            this.btnUIShow.Size = new System.Drawing.Size(100, 20);
+            this.btnUIShow.Size = new System.Drawing.Size(121, 31);
             this.btnUIShow.TabIndex = 1;
             this.btnUIShow.Text = "Paneli Aç";
             this.btnUIShow.UseVisualStyleBackColor = true;
@@ -236,13 +255,18 @@ namespace VidoixHUB.Farmer.Forms
             // 
             // WebForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 259);
+            this.ClientSize = new System.Drawing.Size(559, 261);
             this.Controls.Add(this.pUI);
             this.Controls.Add(this.btnUIShow);
+            this.Font = new System.Drawing.Font("Consolas", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(575, 300);
             this.Name = "WebForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Farmer";
@@ -269,5 +293,6 @@ namespace VidoixHUB.Farmer.Forms
         private System.Windows.Forms.TextBox tbxUserName;
         private System.Windows.Forms.Button btnUIHide;
         private System.Windows.Forms.Button btnUIShow;
+        private System.Windows.Forms.Button btnLoadHomePage;
     }
 }
