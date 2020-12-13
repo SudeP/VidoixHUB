@@ -105,6 +105,11 @@ namespace VidoixHUB.Farmer.Forms
                 Locale = "tr"
             };
 
+            settings.CefCommandLineArgs.Add("disable-gpu"); // Disable GPU acceleration
+            settings.CefCommandLineArgs.Add("disable-gpu-vsync"); //Disable GPU vsync
+
+            settings.SetOffScreenRenderingBestPerformanceArgs();
+
             settings.CefCommandLineArgs["autoplay-policy"] = "no-user-gesture-required";
 
             Cef.Initialize(settings);
@@ -114,6 +119,8 @@ namespace VidoixHUB.Farmer.Forms
                 Parent = this,
                 Dock = DockStyle.Fill
             };
+
+            chromiumWebBrowser.BrowserSettings.ImageLoading = CefState.Disabled;
 
             chromiumWebBrowser.FrameLoadEnd += ChromiumWebBrowser_FrameLoadEnd;
 

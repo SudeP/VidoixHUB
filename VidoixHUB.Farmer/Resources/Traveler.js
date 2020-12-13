@@ -1,6 +1,7 @@
-﻿function timeOut(fn, seconds) {
-    setTimeout(fn(), seconds * 1000);
-}
+﻿var vId = '';
+var divytPlayer = '';
+var iframe_api = '';
+var routed = false;
 function setFunctions() {
     alert = function () {
         return true;
@@ -36,39 +37,44 @@ function hasText(text) {
     return false;
 }
 function whereAmI() {
-    if (hasText('502') && hasText('Error') && hasText('Your IP') && hasText('Cloudflare') && hasText('Bad gateway') && hasText('Ray ID:')) {
+    var crrloc = window.location.href;
+    if (
+        (hasText('502') && hasText('Error') && hasText('Cloudflare'))
+        ||
+        (hasText('500') && hasText('Internal Server Error'))
+    ) {
+        console.log('detected an error');
         ErrorJS();
     } else {
-        if (window.location.href.startsWith('https://www.vidoix.com/login')) {
+        console.log('not error');
+        if (crrloc.startsWith('https://www.vidoix.com/login')) {
             loginJS();
-        } else if (window.location.href.startsWith('https://www.vidoix.com/youtube')) {
+        } else if (crrloc.startsWith('https://www.vidoix.com/youtube')) {
             videoJS();
-        } else if (window.location.href.startsWith('https://www.vidoix.com/dashboard')) {
+        } else if (crrloc.startsWith('https://www.vidoix.com/dashboard')) {
             mainJS();
-        } else if (window.location.href.startsWith('https://www.vidoix.com')) {
+        } else if (crrloc.startsWith('https://www.vidoix.com')) {
             if ($('a[href="/logout"]').length > 0 && $('#filterCoins').length > 0 && $('#loadMoreVideo').length > 0) {
                 mainJS();
             } else {
                 homeJS();
             }
         } else {
-            alert(`Bilinmeyen bir sayfa
-        Link : ${window.location.href}
-        ScreenShot atın bu yazıyı !!!`);
+            window.location.replace('https://www.vidoix.com');
         }
     }
 }
 async function ErrorJS() {
-    await sleep(3000);
-    var second = 60;
+    await sleep(2000);
+    var second = 5;
     for (; second > -1; second--) {
         $('body').html(second.toString() + ' saniye sonra yeniden yönlendiriliceksiniz')
-        await sleep(1000);
+        await sleep(1 * 1000);
     }
-    window.location.href = 'https://www.vidoix.com';
+    window.location.reload();
 }
 function homeJS() {
-    window.location.href = 'https://www.vidoix.com/login';
+    $('a[href="https://www.vidoix.com/login"]')[0].click();
 }
 function loginJS() {
     if ($('#js-login').parent().find('div.alert.alert-danger').length === 0) {
@@ -96,67 +102,84 @@ function mainJS() {
     }, 1000);
 }
 function selectVideo() {
-    if ($('#loadMoreVideo > div > a:first').length > 0) {
-        window.location.href = $('#loadMoreVideo > div > a:first').attr('href');
+    var first = $('#loadMoreVideo > div > a:first');
+    if (first.length > 0) {
+        first[0].click();
     } else {
         if ($('#filterSecond > i').length > 0) {
-            timeOut(function () {
-                $('#filterCoins').click();
-            });
-        } else if ($('#filterCoins > i').length > 0) {
-            timeOut(function () {
-                $('#filterSecond').click();
-            });
-        } else {
             $('#filterCoins').click();
+        } else {
+            $('#filterSecond').click();
         }
     }
 }
 function videoJS() {
-    $(function () {
-        Swal.fire = function () {
-            window.location.href = 'https://www.vidoix.com';
-        }
-    });
-    var waitTimes = 0;
-    var maxWaitTimes = 15;
-    var isPlayerSetInterval = setInterval(function () {
-        if (player !== undefined) {
-            player.addEventListener('onReady', 'onReady');
-            player.addEventListener('onError', 'OnError');
-            clearInterval(isPlayerSetInterval);
-        } else {
-            if (waitTimes == maxWaitTimes) {
-                $('a:contains("Geç")')[0].click();
-                clearInterval(isPlayerSetInterval);
-            } else {
-                waitTimes += 1;
+    document.querySelector('[src="https://www.youtube.com/iframe_api"]').remove();
+    document.getElementById('www-widgetapi-script').remove();
+    document.getElementById('ytPlayer').remove();
+
+
+    player = null;
+    window["YT"] = null;
+    window["YTConfig"] = null;
+
+
+    divytPlayer = document.createElement('div');
+    divytPlayer.id = "ytPlayer";
+    document.querySelector('.embed-responsive').appendChild(divytPlayer);
+
+
+    vId = onYouTubeIframeAPIReady.toString();
+    vId = vId.split('videoId: \'')[1];
+    vId = vId.split('\',')[0];
+
+    eval('onYouTubePlayerStateChange =' +
+        onYouTubePlayerStateChange
+            .toString()
+            .replace('interval = window.setInterval("YouTubePlaying()", 100)', 'window.clearInterval(interval);interval = window.setInterval("YouTubePlaying()", 100);')
+    );
+
+    eval('YouTubePlaying =' +
+        YouTubePlaying
+            .toString()
+            .replace(/(?:\\[rn]|[\r\n\t]+)+/g, "")
+            .replace(`if (roundedPlayed == length) {document.getElementById("other_video").style.display = "block"}`, `if ((parseInt(length / 15) === parseInt(roundedPlayed / 15) || roundedPlayed >= length) && routed === false) {routed = true; var others = $('#loadMoreSuggest > div:nth-child(1) > a'); if (others.length > 0) others[0].click(); else $('.page-sidebar .page-logo a')[0].click();}`)
+    );
+
+
+    onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+        player = new YT.Player('ytPlayer', {
+            height: '270',
+            width: '480',
+            videoId: vId,
+            events: {
+                'onStateChange': onYouTubePlayerStateChange,
+                'onReady': onReady,
+                'onError': onError
             }
-        }
-    }, 250);
+        });
+    }
+
+    iframe_api = document.createElement('script');
+    iframe_api.src = "https://www.youtube.com/iframe_api";
+    iframe_api.type = "text/javascript";
+    iframe_api.id = "iframe_api";
+    document.getElementsByTagName("head")[0].appendChild(iframe_api);
 }
-function OnError(event) {
+function onError(event) {
+    console.log(event);
     $('a:contains("Geç")')[0].click();
 }
 function onReady(event) {
     player.mute();
     player.playVideo();
-    playing = true;
-    isFinish();
 }
-function isFinish() {
-    var isVideoFinishInterval = setInterval(function () {
-        if (roundedPlayed >= length) {
-            clearInterval(isVideoFinishInterval);
-            window.location.href = 'https://www.vidoix.com';
-        } else {
-            if (parseInt(length / 15) === parseInt(roundedPlayed / 15)) {
-                clearInterval(isVideoFinishInterval);
-                window.location.href = 'https://www.vidoix.com';
-            }
-        }
-    }, 500);
-}
-document.addEventListener('DOMContentLoaded', function () {
+
+if (document.readyState !== 'loading') {
     inithome();
-}, false);
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded RUNED');
+        inithome();
+    });
+}

@@ -1,4 +1,4 @@
-﻿if (typeof jQuery != 'undefined' || $ || jQuery || jQuery() || jQuery().jquery) {
+﻿if (typeof jQuery === 'undefined' || jQuery().jquery !== '3.5.1') {
     var jqueryscript = document.createElement('script');
     jqueryscript.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js";
     jqueryscript.type = "text/javascript";
