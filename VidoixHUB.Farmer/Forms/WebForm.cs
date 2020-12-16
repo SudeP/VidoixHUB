@@ -139,7 +139,8 @@ namespace VidoixHUB.Farmer.Forms
 
                     chromiumWebBrowser.ReRegisterSource(ScriptType.Traveler, new Dictionary<string, string> {
                         { "{{username}}", Program.Username },
-                        { "{{password}}", Program.Password }
+                        { "{{password}}", Program.Password },
+                        { "{{errorWaitTime}}", Program.ErrorWaitTime.ToString() }
                     }, false);
                 }
 

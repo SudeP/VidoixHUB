@@ -23,6 +23,7 @@ static class Program
             ThreadName = args[2];
             Width = int.Parse(args[3]);
             Heigth = int.Parse(args[4]);
+            ErrorWaitTime = int.Parse(args[5]);
         }
         catch (Exception ex)
         {
@@ -40,4 +41,5 @@ static class Program
     public static string ThreadName;
     public static int Width;
     public static int Heigth;
+    public static int ErrorWaitTime;
 }

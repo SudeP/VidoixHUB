@@ -32,6 +32,8 @@ namespace VidoixHUB.RPA
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pList = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.nudErrorWaitTime = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudErrorWaitTime)).BeginInit();
             this.SuspendLayout();
             // 
             // pList
@@ -51,7 +53,30 @@ namespace VidoixHUB.RPA
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Ekle";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // nudErrorWaitTime
+            // 
+            this.nudErrorWaitTime.Location = new System.Drawing.Point(573, 12);
+            this.nudErrorWaitTime.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.nudErrorWaitTime.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nudErrorWaitTime.Name = "nudErrorWaitTime";
+            this.nudErrorWaitTime.Size = new System.Drawing.Size(73, 26);
+            this.nudErrorWaitTime.TabIndex = 2;
+            this.nudErrorWaitTime.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nudErrorWaitTime.ValueChanged += new System.EventHandler(this.NudErrorWaitTime_ValueChanged);
             // 
             // MainForm
             // 
@@ -59,6 +84,7 @@ namespace VidoixHUB.RPA
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(658, 507);
+            this.Controls.Add(this.nudErrorWaitTime);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pList);
             this.Font = new System.Drawing.Font("Consolas", 12F);
@@ -71,6 +97,7 @@ namespace VidoixHUB.RPA
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MainForm";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.nudErrorWaitTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -79,5 +106,6 @@ namespace VidoixHUB.RPA
 
         private System.Windows.Forms.Panel pList;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.NumericUpDown nudErrorWaitTime;
     }
 }

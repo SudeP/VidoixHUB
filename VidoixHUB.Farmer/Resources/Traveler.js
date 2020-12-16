@@ -66,7 +66,8 @@ function whereAmI() {
 }
 async function ErrorJS() {
     await sleep(2000);
-    var second = 5;
+    var secSTR = '{{errorWaitTime}}';
+    var second = parseInt(secSTR);
     for (; second > -1; second--) {
         $('body').html(second.toString() + ' saniye sonra yeniden yönlendiriliceksiniz')
         await sleep(1 * 1000);

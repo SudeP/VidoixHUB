@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using VidoixHUB.RPA.Properties;
 
 namespace VidoixHUB.RPA
 {
@@ -15,6 +10,8 @@ namespace VidoixHUB.RPA
         public MainForm()
         {
             InitializeComponent();
+
+            nudErrorWaitTime.Value = int.Parse(Settings.Default.ErrorWaitTime);
 
             foreach (var client in Manage.GetClients())
                 Create(client.Id);
@@ -28,6 +25,7 @@ namespace VidoixHUB.RPA
                 Location = new Point(0, ++count * 75)
             };
         }
-        private void btnAdd_Click(object sender, EventArgs e) => Create(Manage.NewClient());
+        private void BtnAdd_Click(object sender, EventArgs e) => Create(Manage.NewClient());
+        private void NudErrorWaitTime_ValueChanged(object sender, EventArgs e) => Settings.Default.ErrorWaitTime = nudErrorWaitTime.Value.ToString();
     }
 }

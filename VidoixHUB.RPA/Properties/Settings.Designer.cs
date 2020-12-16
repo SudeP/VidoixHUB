@@ -70,5 +70,17 @@ namespace VidoixHUB.RPA.Properties {
                 this["Heigth"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string ErrorWaitTime {
+            get {
+                return ((string)(this["ErrorWaitTime"]));
+            }
+            set {
+                this["ErrorWaitTime"] = value;
+            }
+        }
     }
 }

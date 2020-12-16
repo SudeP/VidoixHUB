@@ -14,5 +14,8 @@
     <Setting Name="Heigth" Type="System.String" Scope="User">
       <Value Profile="(Default)">300</Value>
     </Setting>
+    <Setting Name="ErrorWaitTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
