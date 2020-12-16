@@ -12,6 +12,8 @@ static class Program
         Password = "FM97sivas57";
         Width = 575;
         Heigth = 300;
+        ThreadName = "0";
+        ErrorWaitTime = 10; 
 #else
         if (args.Length != 5)
             System.Diagnostics.Process.GetCurrentProcess().Kill();

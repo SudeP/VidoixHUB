@@ -11,13 +11,13 @@ namespace VidoixHUB.RPA
         {
             InitializeComponent();
 
-            nudErrorWaitTime.Value = int.Parse(Settings.Default.ErrorWaitTime);
+            nudErrorWaitTime.Value = (decimal)Settings.Default.ErrorWaitTime;
 
             foreach (var client in Manage.GetClients())
                 Create(client.Id);
         }
         private int count = -1;
-        private void Create(string id)
+        private void Create(int id)
         {
             _ = new UCProccess(id)
             {
@@ -26,6 +26,6 @@ namespace VidoixHUB.RPA
             };
         }
         private void BtnAdd_Click(object sender, EventArgs e) => Create(Manage.NewClient());
-        private void NudErrorWaitTime_ValueChanged(object sender, EventArgs e) => Settings.Default.ErrorWaitTime = nudErrorWaitTime.Value.ToString();
+        private void NudErrorWaitTime_ValueChanged(object sender, EventArgs e) => Settings.Default.ErrorWaitTime = (int)nudErrorWaitTime.Value;
     }
 }

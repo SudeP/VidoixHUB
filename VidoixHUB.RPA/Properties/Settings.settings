@@ -8,13 +8,13 @@
     <Setting Name="LastId" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Width" Type="System.String" Scope="User">
+    <Setting Name="Width" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">575</Value>
     </Setting>
-    <Setting Name="Heigth" Type="System.String" Scope="User">
+    <Setting Name="Heigth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">300</Value>
     </Setting>
-    <Setting Name="ErrorWaitTime" Type="System.String" Scope="User">
+    <Setting Name="ErrorWaitTime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>

@@ -50,9 +50,9 @@ namespace VidoixHUB.RPA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("575")]
-        public string Width {
+        public int Width {
             get {
-                return ((string)(this["Width"]));
+                return ((int)(this["Width"]));
             }
             set {
                 this["Width"] = value;
@@ -62,9 +62,9 @@ namespace VidoixHUB.RPA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("300")]
-        public string Heigth {
+        public int Heigth {
             get {
-                return ((string)(this["Heigth"]));
+                return ((int)(this["Heigth"]));
             }
             set {
                 this["Heigth"] = value;
@@ -74,9 +74,9 @@ namespace VidoixHUB.RPA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string ErrorWaitTime {
+        public int ErrorWaitTime {
             get {
-                return ((string)(this["ErrorWaitTime"]));
+                return ((int)(this["ErrorWaitTime"]));
             }
             set {
                 this["ErrorWaitTime"] = value;

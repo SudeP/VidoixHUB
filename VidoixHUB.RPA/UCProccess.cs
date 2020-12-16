@@ -6,16 +6,16 @@ namespace VidoixHUB.RPA
 {
     public partial class UCProccess : UserControl
     {
-        public readonly string id;
-        public UCProccess(string id)
+        public readonly int id;
+        public UCProccess(int id)
         {
             this.id = id;
             InitializeComponent();
             var client = Manage.GetClientById(id);
             tbxUsername.Text = client.Username;
             tbxPassword.Text = client.Password;
-            nudWidth.Value = decimal.Parse(client.Width);
-            nudHeigth.Value = decimal.Parse(client.Heigth);
+            nudWidth.Value = client.Width;
+            nudHeigth.Value = client.Heigth;
         }
         private void TbxUsername_TextChanged(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace VidoixHUB.RPA
         private void NudWidth_ValueChanged(object sender, EventArgs e)
         {
             var client = Manage.GetClientById(id);
-            client.Width = nudWidth.Value.ToString();
+            client.Width = (int)nudWidth.Value;
             Manage.SetClient(id, client);
 
             Settings.Default.Width = client.Width;
@@ -44,7 +44,7 @@ namespace VidoixHUB.RPA
         private void NudHeigth_ValueChanged(object sender, EventArgs e)
         {
             var client = Manage.GetClientById(id);
-            client.Heigth = nudHeigth.Value.ToString();
+            client.Heigth = (int)nudHeigth.Value;
             Manage.SetClient(id, client);
 
             Settings.Default.Heigth = client.Heigth;

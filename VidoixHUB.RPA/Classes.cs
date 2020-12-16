@@ -5,11 +5,11 @@ using VidoixHUB.RPA.Properties;
 
 public class Client
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
-    public string Width { get; set; }
-    public string Heigth { get; set; }
+    public int Width { get; set; }
+    public int Heigth { get; set; }
 }
 public class Manage
 {
@@ -17,15 +17,15 @@ public class Manage
     {
         return JsonConvert.DeserializeObject<List<Client>>(Settings.Default.Clients);
     }
-    public static Client GetClientById(string id)
+    public static Client GetClientById(int id)
     {
         return JsonConvert.DeserializeObject<List<Client>>(Settings.Default.Clients).FirstOrDefault(client => client.Id == id);
     }
-    public static string NewClient()
+    public static int NewClient()
     {
         var clients = GetClients();
 
-        string newId = (++Settings.Default.LastId).ToString();
+        int newId = Settings.Default.LastId;
 
         clients.Add(new Client()
         {
@@ -42,7 +42,7 @@ public class Manage
 
         return newId;
     }
-    public static void DeleteClient(string id)
+    public static void DeleteClient(int id)
     {
         var clients = GetClients();
 
@@ -56,7 +56,7 @@ public class Manage
 
         Settings.Default.Reload();
     }
-    public static void SetClient(string id, Client client)
+    public static void SetClient(int id, Client client)
     {
         var clients = GetClients();
 
